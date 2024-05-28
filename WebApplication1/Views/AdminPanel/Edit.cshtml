@@ -1,0 +1,45 @@
+﻿@model Products
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<main>
+    <div class="login-container">
+        <h2 class="login-title">Edit Product</h2>
+
+        <form method="post" action="/AdminPanel/Edit" enctype="multipart/form-data">
+            @Html.HiddenFor(model => model.ID)
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text" class="form-control" id="productName" name="PName" placeholder="Enter product name" value="@Model.PName" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" class="form-control" id="price" name="Price" placeholder="Enter price" value="@Model.Price" required>
+            </div>
+            <div class="form-group">
+                <label for="discountedPrice">Discounted Price</label>
+                <input type="text" class="form-control" id="discountedPrice" name="DiscountedPrice" placeholder="discounted price" value="@Model.DiscountedPrice" required>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="text" class="form-control" id="quantity" name="Quantity" placeholder="Quantity" value="@Model.Quantity" required>
+            </div>
+
+            <div class="form-group">
+                <label for="images">Select An Image</label><br>
+                <input type="file" id="images" name="ImageUrl" accept="image/*">
+            </div>
+
+            <div class="sign-up-container">
+                <div class="row">
+                    <button type="submit" class="btn btn-login btn-block" value="edit">Save Changes</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</main>

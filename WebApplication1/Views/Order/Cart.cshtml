@@ -1,0 +1,59 @@
+﻿@using WebApplication1.Models
+@model List<CartItem>
+@{
+    Layout = "Layout2";
+}
+
+
+<h2>Shopping Cart</h2>
+
+<div class="cart-container my-5">
+    <div class="row">
+        @for (int i = 0; i < Model.Count; i += 3)
+        {
+            <div class="row">
+                @for (int j = 0; j < 3 && i + j < Model.Count; j++)
+                {
+                    <div class="col-md-4">
+                        <div class="card horizontal" style="width: 100%; margin-bottom: 20px; margin-top: 30px; display: flex; flex-direction: row; align-items: center; padding: 1rem;">
+                            <div class="card-image" style="width: 30%; float: left; padding: 1rem;">
+                                <img src="@Model[i + j].Product?.ImageUrl" class="card-img-top" alt="..." style="width: 190%; height: 170px; object-fit: cover;">
+                            </div>
+                            <div class="card-body" style="width: 70%; float: left; padding: 1rem;">
+                                <h5 class="card-title" style="font-weight: bold; margin-bottom: 0.5rem;margin-left:70px;">@Model[i + j].Product.PName</h5>
+                                <p class="card-text" style="font-size: 1rem; margin-bottom: 0.2rem;margin-left:70px;">Quantity: @Model[i + j].Quantity</p>
+                                <p class="card-text" style="font-size: 1rem; margin-bottom: 0.2rem;margin-left:70px;">Price: @Model[i + j].Product.DiscountedPrice</p>
+                                <p class="card-text" style="font-size: 1rem; margin-bottom: 0.2rem;margin-left:70px;">Total: @(Model[i + j].Quantity * Model[i + j].Product.DiscountedPrice)</p>
+                                <form action="/Order/RemoveFromCart" method="post">
+                                    <input type="hidden" name="ProductId" value="@Model[i + j].ProductId">
+                                    <button type="submit" class="btn btn-danger btn-sm" >Remove</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+  
+
+<div class="sum-container">
+   <div class="container">
+        <row>
+            <div class="col-4 my-2"><h4>Total:@Model.Sum(item => item.Quantity * item.Product.DiscountedPrice)/-</h4></div>
+            <div class="col-4 my-2"> <a class="btn btn-success checkout-btn" href="/Order/Checkout">Check out</a></div>
+            <div class="col-4">
+               
+            </div>
+        </row>
+
+
+   </div>
+    
+</div>
+
+
+
+
+

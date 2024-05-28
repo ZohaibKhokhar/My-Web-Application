@@ -1,0 +1,45 @@
+﻿@using WebApplication1.Controllers
+@model List<Products>
+@{
+    Layout = "Layout2";
+}
+
+<main>
+
+    <div class="proheader-bg">
+    </div>
+
+   
+
+    <div class="cart-container" style="margin-top: 30px;">
+	
+    @for (int i = 0; i < Model.Count; i += 6)
+    {
+        <div class="row py-5" style="justify-content: space-evenly;">
+
+            @for (int j = i; j < Math.Min(i + 6, Model.Count); j++)
+            {
+                <div class="card" style="width: 10rem; height: 16.5rem;margin-top: 7px;">
+                    <img src="@Model[j].ImageUrl" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title">@Model[j].PName</h6>
+                            <p class="card-text">@Model[j].DiscountedPrice</p>
+                            <form action="/Order/AddToCart" method="post">
+                            <input type="hidden" name="ProductId" value="@Model[j].ID">
+                            <input type="hidden" name="Quantity" value="1">
+                                <button type="submit" class="btn btn-dark btn-sm">add to cart</button>
+                        </form>
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+
+
+    
+    </div>
+
+    <partial name="_Sliding" />
+
+</main>

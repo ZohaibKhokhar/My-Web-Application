@@ -1,0 +1,69 @@
+﻿@model List<Products>
+@{
+    Layout = "Layout2";
+
+}
+
+
+<main>
+    <!-- Header with background image -->
+
+    <div class="header-bg">
+        <div class="row">
+            <div class="heading-containerHomeIndex">
+                <p class="welcome">WELCOME TO PAW PERFECT</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -->
+
+    <div class="hcontainer mt-3">
+
+        <div class="row">
+            <div><a href="@Url.Action("Index","Order")">Our Top Products</a></div>
+        </div>
+    </div>
+    <div class="hcontainer">
+        <div class="row">
+            <div><p style="font-size:small; font: weight 300px; color:black; font-family: 'Times New Roman', Times, serif;">FEATURE PRODUCTS</p></div>
+        </div>
+    </div>
+
+       <!-- cards -->
+
+    <div class="cart-container" style="margin-top: 30px;">
+
+        @for (int i = 0; i < 10; i += 5)
+        {
+            <div class="row py-5" style="justify-content: space-evenly;">
+
+                @for (int j = i; j < Math.Min(i + 5, Model.Count); j++)
+                {
+                    <div class="card" style="width: 10rem; height: 16.5rem;margin-top: 7px;">
+                        <img src="@Model[j].ImageUrl" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h6 class="card-title">@Model[j].PName</h6>
+                            <p class="card-text">@Model[j].DiscountedPrice/-</p>
+                            <a href="@Url.Action("Index","Order")" class="btn btn-dark btn-sm">Add to cart</a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        }   
+
+</div>
+
+    <partial name="_Sliding" />
+
+
+
+    <div class="hcontainer mt-3">
+
+        <div class="row">
+            <div><a href="@Url.Action("Index","Order")">Visit Online Store</a></div>
+        </div>
+    </div>
+</main>
+

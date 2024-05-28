@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+
+<main>
+    <div class="login-container">
+        <h2 class="login-title">Admin Panel</h2>
+
+        <form method="post" action="/AdminPanel/Add" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter product name" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" class="form-control" id="price" name="price" placeholder="Enter price" required>
+            </div>
+            <div class="form-group">
+                <label for="discountedPrice">Discounted Price</label>
+                <input type="text" class="form-control" id="discountedPrice" name="discountedPrice" placeholder="discounted price" required>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Quantity" required>
+            </div>
+
+            <div class="form-group">
+                <label for="images">Select An Image</label><br>
+                <input type="file"  id="images" name="img" accept="image/*">
+            </div>
+
+            <div class="sign-up-container">
+                <div class="row">
+                    <button type="submit" class="btn btn-login btn-block" value="upload">Add Product</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</main>

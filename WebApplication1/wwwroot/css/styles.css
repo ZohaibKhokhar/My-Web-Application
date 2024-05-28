@@ -1,0 +1,609 @@
+
+/*body*/
+body {
+    overflow-x: hidden;
+    background-color: white;
+    padding-top: 14px;
+}
+
+:root {
+    --clr-primary: #232323;
+}
+
+
+/*links in product page*/
+
+a {
+    color: black;
+}
+
+    a:hover {
+        color: rgb(114, 114, 223);
+    }
+
+
+
+/*navbar*/
+
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    margin: 0 auto;
+    font-weight: bolder;
+    padding-left: 10px;
+    font-size:25px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.navbar-nav {
+    margin: 0 auto;
+}
+.nav-link {
+    padding: 0.5rem 1rem;
+}
+
+
+
+/*cart icon on the navbar 
+*/
+
+ 
+
+.dropdown-menu.cart-dropdown {
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+}
+
+    .dropdown-menu.cart-dropdown .dropdown-header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .dropdown-menu.cart-dropdown .cart-summary {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .dropdown-menu.cart-dropdown .cart-summary li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+    .dropdown-menu.cart-dropdown .cart-empty {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .dropdown-menu.cart-dropdown .cart-actions {
+        text-align: center;
+        padding: 20px;
+    }
+
+        .dropdown-menu.cart-dropdown .cart-actions .btn {
+            margin: 0 10px;
+        }
+
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-badge {
+    position: absolute;
+    top: 10px; /* adjust the value to position it correctly */
+    right: 10px; /* adjust the value to position it correctly */
+    background-color: red;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+/*login*/
+.login-container {
+    max-width: 500px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: #fff; /* White background */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.login-title {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif; /* Stylish font */
+    color: white; /* rgb(114, 114, 223) color */
+    background-color: var(--clr-primary); /* Yellow background for title */
+    padding: 10px; /* Add some padding */
+    border-radius: 10px; /* Rounded corners */
+    margin-bottom: 20px; /* Add some space below the title */
+}
+
+
+
+
+
+.btn-login {
+    background-color: var(--clr-primary); /* Yellow background */
+    border-color: var(--clr-primary); /* Yellow border color */
+    color: var(--clr-primary); /* rgb(114, 114, 223) text color */
+    font-weight: bold;
+}
+
+    .btn-login:hover {
+        background-color: var(--clr-primary); /* Lighter yellow on hover */
+        border-color: var(--clr-primary); /* Lighter yellow border on hover */
+    }
+
+
+
+
+
+
+/*header*/
+
+.header-bg {
+    background-image: url('images/catimg2.jpg'); /* Add your background image URL here */
+    background-size: cover;
+    background-position: center;
+    height: 500px; /* Adjust height as needed */
+    margin-top:50px;
+}
+
+.dropdown-item:hover {
+    color: white;
+    background-color: var(--clr-primary);
+}
+
+.heading-container-aboutUs {
+    max-width: 700px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+    justify-content: center;
+    background-color: var(--clr-primary);
+    color:white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+.heading-containerHomeIndex {
+    max-width: 700px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+    justify-content: center;
+
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+.welcome {
+    color: black;
+    font-size: 3em;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+
+
+
+
+
+/* Styling for the search bar */
+.search-form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px; /* decreased from 10px */
+    width: 300px;
+}
+
+.search-input {
+    padding: 5px; /* decreased from 10px */
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.search-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px; /* decreased from 8px 12px */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+    .search-btn i {
+        font-size: 16px; /* added */
+    }
+
+
+
+
+/*card*/
+
+.card {
+    width: 18rem;
+}
+
+.card-text {
+    font-weight: 200;
+    font-style: italic;
+    color: black;
+}
+
+/*btn*/
+
+
+
+  
+
+/*cart container*/
+
+
+
+.cart-container {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/*card*/
+
+/*hcontainer*/
+.hcontainer {
+    display: flex;
+    justify-content: center;
+}
+
+
+/*footer-container*/
+
+.ftext {
+    color: black;
+}
+
+
+.footer-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    background-color: var(--clr-primary);
+}
+
+.footer-heading {
+    color: white;
+    padding-top: 10px;
+    margin-left: 20px;
+}
+
+/*warning button in cards*/
+
+.btn-warning {
+    border-radius: 20px;
+    border-color: #232323;
+}
+
+    .btn-warning:hover {
+        color: black;
+        background-color: #fff;
+    }
+
+
+/*about-us container*/
+
+.about-head {
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.about-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    max-width: 800px;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.paragraph {
+    color: black;
+    font-size: large;
+}
+
+
+.colore {
+    color: var(--clr-primary);
+}
+
+/*appointment page*/
+
+
+.btn-appoint:hover {
+    color: black;
+    background-color: var(--clr-primary);
+}
+
+.form-control option:hover {
+    background-color: var(--clr-primary);
+    color: white; /* add this to maintain readability */
+}
+
+.form-control option:active {
+    background-color: var(--clr-primary);
+    color: black; /* add this to maintain readability */
+}
+
+
+
+/*Product page*/
+.proheader-bg {
+    background-image: url('images/back5.jpeg'); /* Add your background image URL here */
+    background-size: cover;
+    background-position: center;
+    height: 500px; /* Adjust height as needed */
+}
+
+@media only screen and (max-width: 1200px) {
+    .proheader-bg {
+        margin-top: 65px;
+        background-image: url('images/back12-place2.webp'); /* Add your background image URL here */
+        background-size: cover;
+        background-position: center;
+        max-width: 1345px;
+        height: 500px; /* Adjust height as needed */
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    /*background in products*/
+
+    .proheader-bg {
+        margin-top: 50px;
+        background-image: url('images/back10.png'); /* Add your background image URL here */
+        background-size: cover;
+        background-position: center;
+        max-width: 1345px;
+        height: 400px; /* Adjust height as needed */
+    }
+    /*background in index*/
+    .header-bg {
+        background-image: url('images/back7.jpeg'); /* Add your background image URL here */
+        background-size: cover;
+        background-position: center;
+        height: 500px; /* Adjust height as needed */
+    }
+
+    .welcome {
+        color: black;
+        font-size: 2em;
+        font-weight: bolder;
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+    }
+}
+
+
+
+@media only screen and (max-width: 576px) {
+    .proheader-bg {
+        margin-top: 30px;
+        background-image: url('images/back4.jpg'); /* Add your background image URL here */
+        background-size: cover;
+        background-position: center;
+        max-width: 1345px;
+        height: 400px; /* Adjust height as needed */
+    }
+}
+
+.new {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/*footer*/
+footer .top-bar {
+    background-color: var(--clr-primary);
+    padding-bottom: 10px;
+}
+
+.socials a {
+    color: inherit;
+}
+
+footer .top-bar i {
+    padding: 8px;
+    height: 50px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+}
+
+    footer .top-bar i:hover {
+        background-color: white;
+        color: var(--clr-primary);
+        border-radius: 50%;
+        transition: 0.4s;
+        cursor: pointer;
+    }
+
+.footer-section a {
+    text-decoration: none;
+    color: black;
+}
+
+    .footer-section a:hover {
+        color: var(--clr-primary);
+    }
+
+.footer-section h2 {
+    font-size: 24px;
+}
+
+.footer-section h3 {
+    font-size: 16px;
+    letter-spacing: -0.5px;
+}
+
+
+
+
+.sliding-container {
+    max-width: 1250px;
+    max-height: 500px;
+    margin: auto;
+    margin-bottom: 30px;
+    background-color: #fff; /* White background */
+    padding: 20px;
+    border-radius: 15px;
+}
+
+
+/*contact us page*/
+
+
+.contact-container {
+    max-width: 350px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top:100px;
+    margin-left:35px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-title {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    color: white;
+    background-color: var(--clr-primary);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-login {
+    background-color: var(--clr-primary);
+    border-color: var(--clr-primary);
+    color: whitesmoke;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+
+    .btn-login:hover {
+        background-color: white;
+        border-color: var(--clr-primary);
+        color: var(--clr-primary);
+    }
+
+.form-color {
+    border-color: var(--clr-primary);
+}
+
+
+.contact-header-bg {
+    background-image: url('images/con9.jpg'); /* Add your background image URL here */
+    background-size: cover;
+    background-position: center;
+    height: 900px;
+    margin-top: 60px;
+    padding-top: 60;
+    /* Adjust height as needed */
+}
+
+
+
+
+/* end of contact us page */
+
+
+
+/*showing appointments*/
+.table-striped {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    .table-striped thead th {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: left;
+        border-bottom: 2px solid #333;
+    }
+
+    .table-striped tbody td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table-striped tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .table-striped th, .table-striped td {
+        border-right: 1px solid #ddd;
+    }
+
+        .table-striped th:last-child, .table-striped td:last-child {
+            border-right: none;
+        }
+
+
+.cut-price {
+    font-size: 0.9em; /* adjust the font size as needed */
+}
+
+/*button danger*/
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 70px;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+
+    /*cart sum conatiner*/
+
+
+.sum-container {
+
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+

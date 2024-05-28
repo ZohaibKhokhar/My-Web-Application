@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "Layout2";
+}
+
+<main style="margin-top: 100px ;">
+    <div class="container d-flex justify-content-center mt-5" style="  border-radius: 20px; background-color:#f0f0f0; padding: 70px;">
+        <div class="border rounded p-4" style="border-radius: 30px; width: 800px;">
+            <h2 class="text-center mb-4" style="color:white; font-style: italic; font-family: 'Times New Roman', Times, serif;background-color:#232323;height:50px; padding-top:5px; border-radius:15px">BOOK APPOINTMENT</h2>
+            <form method="post" action="/Appointment/Add">
+                
+                <div class="form-row">
+                    <label for="yourName">Name</label>
+                    <input type="text" class="form-control" id="yourName" placeholder="Name" name="personName" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" class="form-control" id="phoneNumber" placeholder="Phone Number" name="phoneNumber" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="petType">Pet Type</label>
+                    <select class="form-control" id="petType" name="petType" required>
+                        <option value="petType">Pet Type</option>
+                        <option value="dog">Dog</option>
+                        <option value="cat">Cat</option>
+                        <option value="bird">Bird</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+
+                    <label for="appointmentDateandTime">Preferred Date And Time</label> 
+                    <input type="datetime-local" class="form-control" id="appointmentDateandTime" name="dateAndTime" required>
+                </div>
+             
+                <div class="form-row">
+                    <label for="appointmentReason">Reason for Appointment</label>
+                    <textarea class="form-control" id="appointmentReason" rows="3" placeholder="Reason For Appointment" name="AReason" required></textarea>
+                </div>
+
+                <div class="sign-up-container" style="padding-top: 10px;">
+                    <div class="row">
+                        <button type="submit" class="btn btn-login btn-block">Book Appointment</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+</main>

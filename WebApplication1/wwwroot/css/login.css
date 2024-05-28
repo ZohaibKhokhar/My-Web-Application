@@ -1,0 +1,134 @@
+body {
+    background-color: #fff;
+}
+
+.login-container {
+    max-width: 500px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: #fff; /* White background */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.login-title {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif; /* Stylish font */
+    font-style: italic;
+    color: #1E8449; /* Green color */
+    background-color: #FFC107; /* Yellow background for title */
+    padding: 10px; /* Add some padding */
+    border-radius: 10px; /* Rounded corners */
+    margin-bottom: 20px; /* Add some space below the title */
+}
+
+.form-control {
+    border-color: #1E8449; /* Green border color */
+}
+
+    .form-control:focus {
+        border-color: #1E8449;
+        box-shadow: 0 0 0 0.2rem rgba(19, 175, 45, 0.25);
+    }
+
+.btn-login {
+    background-color: #FFC107; /* Yellow background */
+    border-color: #FFC107; /* Yellow border color */
+    color: #1E8449; /* Green text color */
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+body {
+    background-color: #fff;
+}
+
+:root {
+    --clr-primary: #232323;
+}
+
+.login-container {
+    max-width: 350px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: #fff; /* White background */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.login-title {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif; /* Stylish font */
+    font-style: italic;
+    color: #1E8449; /* Green color */
+    background-color: var(--clr-primary); /* Yellow background for title */
+    padding: 10px; /* Add some padding */
+    border-radius: 10px; /* Rounded corners */
+    margin-bottom: 20px; /* Add some space below the title */
+}
+
+.form-control {
+    border-color: #1E8449; /* Green border color */
+}
+
+    .form-control:focus {
+        border-color: #1E8449;
+        box-shadow: 0 0 0 0.2rem rgba(19, 175, 45, 0.25);
+    }
+
+.btn-login {
+    background-color: var(--clr-primary); /* Yellow background */
+    border-color: var(--clr-primary); /* Yellow border color */
+    color: #1E8449; /* Green text color */
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+
+    .btn-login:hover {
+        background-color: white; /* Lighter yellow on hover */
+        border-color: var(--clr-primary);
+        color: var(--clr-primary); /* Lighter yellow border on hover */
+    }
+
+.sign-up-container {
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.sign-up {
+    color: #1E8449;
+    text-decoration: none;
+}
+
+    .sign-up:hover {
+        color: var(--clr-primary);
+    }
+
+.btn-login:hover {
+    background-color: white; /* Lighter yellow on hover */
+    border-color: var(--clr-primary); /* Lighter yellow border on hover */
+    color: var(--clr-primary);
+}
+
+.sign-up-container {
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.sign-up {
+    color: #1E8449;
+    text-decoration: none;
+}
+
+    .sign-up:hover {
+        color:var(--clr-primary);
+    }
+label {
+margin-bottom:3px;
+margin-top:3px;
+}

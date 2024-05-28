@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplication2</title>
+    <link rel="stylesheet" href="~/css/bootstrap/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="~/css/login.css" type="text/css" asp-append-version="true" />
+    <script src="~/js/javas/bootstrap.bundle.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+<
+        <main>
+            @RenderBody()
+        </main>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+	<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<script src="~/js/javas/bootstrap.bundle.min.js" type="text/javascript"></script>
+	<link href="~/css/admin.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+            <div class="container-fluid">
+                <span class="navbar-brand text-white">Admin Panel</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Add","AdminPanel")">Add Product</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","AdminPanel")">All Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Customers</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+
+	@RenderBody()
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+
+</html>
