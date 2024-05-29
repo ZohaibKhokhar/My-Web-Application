@@ -104,5 +104,42 @@ namespace WebApplication1.Controllers
             });
             return RedirectToAction("Add", "AdminPanel");
         }
+        public IActionResult AllOrders()
+        {
+            OrderRepository repo = new OrderRepository();
+            List<Order> orders=repo.GetAll();
+            return View(orders);
+        }
+
+        public IActionResult OrderDetail(int id)
+        {
+            OrderItemRepository repo=new OrderItemRepository();
+            List<OrderItem> items = new List<OrderItem>();
+            items=repo.GetAllByOrderId(id);
+            return View(items);
+        }
+
+        public IActionResult CustomerDetail(int id)
+        {
+            CustomerRepository repository = new CustomerRepository();
+            return View(repository.GetCustomerById(id));
+        }
+
+        public IActionResult ProductDetail(int id)
+        {
+           ProductsRepository repository = new ProductsRepository();
+            return View(repository.Get(id));
+        }
+        public IActionResult AllCustomers()
+        {
+            CustomerRepository repository=new CustomerRepository();
+            return View(repository.GetAllCustomers());
+        }
+
+        public IActionResult ShowAll()
+        {
+            AppointmentRepository repo = new AppointmentRepository();
+            return View(repo.GetAll());
+        }
     }
 }

@@ -10,9 +10,10 @@ namespace WebApplication1.Models
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand("INSERT INTO Orders (CustomerId, OrderDate, TotalPrice) VALUES (@CustomerId, @OrderDate, @TotalPrice)", connection))
+                using (SqlCommand command = new SqlCommand("INSERT INTO Orders (OrderId,CustomerId, OrderDate, TotalPrice) VALUES (@id,@CustomerId, @OrderDate, @TotalPrice)", connection))
                 {
                     connection.Open();
+                    command.Parameters.AddWithValue("@id", order.OrderId);
                     command.Parameters.AddWithValue("@CustomerId", order.CustomerId);
                     command.Parameters.AddWithValue("@OrderDate", order.OrderDate);
                     command.Parameters.AddWithValue("@TotalPrice", order.TotalPrice);
@@ -20,7 +21,7 @@ namespace WebApplication1.Models
                 }
             }
         }
-
+    
         public List<Order> GetAll()
         {
             List<Order> orders = new List<Order>();
@@ -48,6 +49,18 @@ namespace WebApplication1.Models
             }
 
             return orders;
+        }
+        public int GetMaxOrderId()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SELECT MAX(OrderId) FROM Orders", connection))
+                {
+                    connection.Open();
+                    object result = command.ExecuteScalar();
+                    return result == null || result == DBNull.Value ? 0 : (int)result;
+                }
+            }
         }
     }
 }

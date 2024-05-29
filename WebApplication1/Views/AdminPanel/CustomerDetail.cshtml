@@ -1,0 +1,31 @@
+﻿@model Customer
+@{
+	Layout = "_AdminLayout";
+}
+<div class="login-container py-5">
+
+	<div class="row" style="justify-content:center;">
+		<h1 style="font-family:'Times New Roman', Times, serif;font-style:italic;">Customer Detail</h1>
+	</div>
+	<span>
+		<h4>Name:</h4>
+		<p>@Model.Name</p>
+	</span> 	
+	<span>
+		<h4>Address:</h4>
+		<p>@Model.Address</p>
+	</span> 
+	<span>
+		<h4>Phone Number:</h4>
+		<p>@Model.PhoneNumber</p>
+	</span>
+
+	<span>
+		<h4>Email:</h4>
+		<p>@Model.Email</p>
+	</span>
+
+	
+</div>
+
+

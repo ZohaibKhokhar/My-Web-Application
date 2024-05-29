@@ -57,13 +57,69 @@ public class OrderController : Controller
     }
 
     [HttpPost]
-
     public IActionResult PlaceOrder(Customer customer)
     {
-        customer.Email = User.Identity.Name;
-        CustomerRepository cusRepo=new CustomerRepository();
+        // Autogenerate a unique customer ID
+        CustomerRepository cusRepo = new CustomerRepository();
+        int id = cusRepo.getLastId();
+        customer.CustomerId= ++id;
+        
+        //create a new customer
+        customer.Email = User.Identity.Name; 
         cusRepo.AddCustomer(customer);
+
+        // Autogenerate a unique customer ID
+        OrderRepository orderRepo = new OrderRepository();
+        id=orderRepo.GetMaxOrderId();
+        id++;
+
+
+        // Created a new order
+        Order order = new Order
+        {
+            OrderId= id,
+            CustomerId = customer.CustomerId,
+            OrderDate = DateTime.Now,
+            TotalPrice = CalculateTotalPrice() // Calculate the total price of the order
+        };
+
+        orderRepo.AddOrder(order);
+
+        // Add all order items in repository 
+        foreach (var item in GetCartItemsFromSession())
+        {
+            OrderItem orderItem = new OrderItem
+            {
+                OrderId = order.OrderId,
+                ProductId = item.ProductId,
+                Quantity = item.Quantity,
+                Price = item.Product.DiscountedPrice
+            };
+
+            OrderItemRepository orderItemRepo = new OrderItemRepository();
+            orderItemRepo.AddOrderItem(orderItem);
+        }
         return View(customer);
+    }
+
+    public IActionResult Cart()
+    {
+        List<CartItem> cartItems = GetCartItemsFromSession(); // or GetCartItemsFromDatabase()
+        return View(cartItems);
+    }
+    [HttpPost]
+    public IActionResult RemoveFromCart(int productId)
+    {
+        var cartItems = GetCartItemsFromSession();
+        var itemToRemove = cartItems.Find(item => item.ProductId == productId);
+
+        if (itemToRemove != null)
+        {
+            cartItems.Remove(itemToRemove);
+            HttpContext.Session.SetString("Cart", JsonConvert.SerializeObject(cartItems));
+        }
+
+        return RedirectToAction("Cart");
     }
 
 
@@ -87,25 +143,7 @@ public class OrderController : Controller
         }
         return total;
     }
-    public IActionResult Cart()
-    {
-        List<CartItem> cartItems = GetCartItemsFromSession(); // or GetCartItemsFromDatabase()
-        return View(cartItems);
-    }
-    [HttpPost]
-    public IActionResult RemoveFromCart(int productId)
-    {
-        var cartItems = GetCartItemsFromSession();
-        var itemToRemove = cartItems.Find(item => item.ProductId == productId);
-
-        if (itemToRemove != null)
-        {
-            cartItems.Remove(itemToRemove);
-            HttpContext.Session.SetString("Cart", JsonConvert.SerializeObject(cartItems));
-        }
-
-        return RedirectToAction("Cart");
-    }
+   
 
 }
  

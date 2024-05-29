@@ -1,0 +1,20 @@
+﻿@model Products
+@{
+    Layout = "_AdminLayout";
+}
+
+
+<div class="container">
+ <div class="row py-5" style="justify-content: space-around;">
+<div class="card" style="margin-top:20px; width:22rem; height: 26rem;margin-top: 7px;">
+    <img src="@Model.ImageUrl" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h6 class="card-title">Name : @Model.PName</h6>
+        <p class="card-text">Price : @Model.DiscountedPrice</p>
+    </div>
+</div>
+</div>
+</div>
+
+
+

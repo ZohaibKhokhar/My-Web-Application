@@ -31,10 +31,6 @@ namespace WebApplication1.Controllers
             repository.Add(appointment);
             return RedirectToAction("view","Appointment");
         }
-        public IActionResult ShowAll()
-        {
-            AppointmentRepository repo = new AppointmentRepository();
-            return View(repo.GetAll());
-        }
+    
     }
 }
