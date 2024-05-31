@@ -32,5 +32,45 @@ namespace WebApplication1.Controllers
 		{
 			return View();
 		}
-	}
+
+        public IActionResult MyOrder()
+        {
+            List<int> customerIds = new List<int>();
+            CustomerRepository repository = new CustomerRepository();
+            customerIds = repository.GetCustomerId(User.Identity.Name);
+            List<Order> listOrders = new List<Order>();
+            if (customerIds.Count != 0)
+            {
+                OrderRepository repo = new OrderRepository();
+                foreach (var cusId in customerIds)
+                { 
+                    int orderId = repo.GetOrderIdByCustomerId(cusId);
+                    Order order=new Order();
+                    order=repo.getOrderById(orderId);
+                    listOrders.Add(order);
+                }
+
+                return View(listOrders);
+            }
+            else
+            {
+
+                return View(listOrders);
+            }
+        }
+        public IActionResult YourOrder(int id)
+        {
+            OrderItemRepository repo = new OrderItemRepository();
+            List<OrderItem> items = new List<OrderItem>();
+            items = repo.GetAllByOrderId(id);
+            return View(items);
+        }
+
+        public IActionResult YourDetail(int id)
+        {
+            CustomerRepository repository = new CustomerRepository();
+            return View(repository.GetCustomerById(id));
+        }
+
+    }
 }

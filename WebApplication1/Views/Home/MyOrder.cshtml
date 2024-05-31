@@ -1,0 +1,37 @@
+﻿@model List<Order>
+@{
+	Layout = "Layout2";
+}
+
+<div class="container">
+    <div class="row" style="padding-top: 0px;">
+        <div class="heading-container-aboutUs" style="justify-content: center;">
+            <p class="welcome" style="padding-left: 50PX;color:white;">Your Online Orders</p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid" style="margin-top:90px; margin-bottom:150px;">
+    <table class="table table-responsive table-striped table-bordered" style="width:100%">
+        <tbody>
+            <tr>
+                <th><h4>Order Date and Time</h4></th>
+                <th><h4>Customer Id</h4></th>
+                <th><h4>Order Detail</h4></th>
+                <th><h4>Customer Detail</h4></th>
+            </tr>
+
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderDate</td>
+                    <td>@order.CustomerId</td>
+                    <td><a class="btn btn-outline-warning" href="@Url.Action("YourOrder", "Home", new { id =order.OrderId })">your order</a></td>
+                    <td><a class="btn btn-outline-info" href="@Url.Action("YourDetail", "Home", new { id =order.CustomerId })">your detail</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

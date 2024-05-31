@@ -99,14 +99,18 @@ public class OrderController : Controller
             OrderItemRepository orderItemRepo = new OrderItemRepository();
             orderItemRepo.AddOrderItem(orderItem);
         }
-        return View(customer);
+        HttpContext.Session.Remove("Cart");
+        return RedirectToAction("MyOrder","Home");
     }
 
+
+    // all cart things using session
     public IActionResult Cart()
     {
         List<CartItem> cartItems = GetCartItemsFromSession(); // or GetCartItemsFromDatabase()
         return View(cartItems);
     }
+
     [HttpPost]
     public IActionResult RemoveFromCart(int productId)
     {

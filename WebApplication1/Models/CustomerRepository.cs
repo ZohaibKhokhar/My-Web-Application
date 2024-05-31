@@ -88,6 +88,28 @@ namespace WebApplication1.Models
             }
             return customer;
         }
+        public List<int> GetCustomerId(string currentUserName)
+        {
+            List<int> list = new List<int>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "select CustomerId from Customers where Email=@currentUser";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.Add("@currentUser", SqlDbType.NVarChar).Value = currentUserName;
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = int.Parse(reader["CustomerId"].ToString());
+                            list.Add(id);
+                        }
+                    }
+                }
+            }
+            return list;
+        }
     }
 }
 

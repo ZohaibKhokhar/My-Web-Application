@@ -32,7 +32,6 @@ namespace WebApplication1.Controllers
             return View(product);
         }
         [HttpPost]
-        [HttpPost]
         public IActionResult Edit(Products product, IFormFile ImageUrl)
         {
             if (ImageUrl != null && ImageUrl.Length > 0)
