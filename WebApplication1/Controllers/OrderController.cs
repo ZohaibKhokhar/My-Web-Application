@@ -13,6 +13,14 @@ public class OrderController : Controller
         _httpContextAccessor = httpContextAccessor;
     }
 
+    public int CartCount
+    {
+        get
+        {
+            return GetCartItemsFromSession().Count;
+        }
+    }
+
     public IActionResult Index()
     {
         ProductsRepository productsRepository = new ProductsRepository();
@@ -22,6 +30,8 @@ public class OrderController : Controller
     [HttpPost]
     public IActionResult AddToCart(int productId, int quantity)
     {
+        // Update cart count
+      
         var cartItems = GetCartItemsFromSession();
         var existingItem = cartItems.Find(item => item.ProductId == productId);
 
@@ -114,6 +124,7 @@ public class OrderController : Controller
     [HttpPost]
     public IActionResult RemoveFromCart(int productId)
     {
+        // Update cart count
         var cartItems = GetCartItemsFromSession();
         var itemToRemove = cartItems.Find(item => item.ProductId == productId);
 
@@ -122,6 +133,7 @@ public class OrderController : Controller
             cartItems.Remove(itemToRemove);
             HttpContext.Session.SetString("Cart", JsonConvert.SerializeObject(cartItems));
         }
+
 
         return RedirectToAction("Cart");
     }

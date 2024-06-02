@@ -100,6 +100,33 @@ namespace WebApplication1.Models
 
             return order;
         }
+        public void deleteOrderById(int id)
+        {
+            Order order = new Order();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("DELETE FROM Orders WHERE OrderId = @OrderId", connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@OrderId", id);
+                    int affectedRows = command.ExecuteNonQuery();
+                }
+            }
+        }
+        public int getCustomerIdByOrderId(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SELECT CustomerId FROM Orders WHERE OrderId = @OrderId", connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@OrderId", id);
+                    object result = command.ExecuteScalar();
+                    return result == null || result == DBNull.Value ? 0 : (int)result;
+                }
+            }
+        }
     }
 }
 

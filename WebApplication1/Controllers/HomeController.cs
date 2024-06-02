@@ -5,7 +5,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -13,25 +13,26 @@ namespace WebApplication1.Controllers
         {
             _logger = logger;
         }
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
             ProductsRepository productsRepository = new ProductsRepository();
             return View(productsRepository.GetAll());
-      
+
         }
 
-      
+        [AllowAnonymous]
         public IActionResult AboutUs()
         {
             return View();
         }
 
+        [AllowAnonymous]
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
 
-		public IActionResult ContactUs()
-		{
-			return View();
-		}
 
         public IActionResult MyOrder()
         {
@@ -43,10 +44,10 @@ namespace WebApplication1.Controllers
             {
                 OrderRepository repo = new OrderRepository();
                 foreach (var cusId in customerIds)
-                { 
+                {
                     int orderId = repo.GetOrderIdByCustomerId(cusId);
-                    Order order=new Order();
-                    order=repo.getOrderById(orderId);
+                    Order order = new Order();
+                    order = repo.getOrderById(orderId);
                     listOrders.Add(order);
                 }
 
@@ -71,6 +72,10 @@ namespace WebApplication1.Controllers
             CustomerRepository repository = new CustomerRepository();
             return View(repository.GetCustomerById(id));
         }
-
+        public IActionResult ProductDetail(int id)
+        {
+            ProductsRepository repository = new ProductsRepository();
+            return View(repository.Get(id));
+        }
     }
 }

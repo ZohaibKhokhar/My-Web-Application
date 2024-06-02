@@ -175,3 +175,14 @@ h5 {
     font-style: italic;
     color: black;
 }
+
+
+/*used for heading in admin panel*/
+
+.welcome {
+    color: black;
+    font-size: 3em;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}

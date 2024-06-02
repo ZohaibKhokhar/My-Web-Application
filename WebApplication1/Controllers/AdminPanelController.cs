@@ -6,7 +6,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    //[Authorize(Policy = "AdminPolicy")]
+    [Authorize(Policy = "AdminPolicy")]
     public class AdminPanelController : Controller
     {
         private readonly ILogger<AdminPanelController> _logger;
@@ -27,8 +27,8 @@ namespace WebApplication1.Controllers
 
         public IActionResult Edit(int id)
         {
-            ProductsRepository repository = new ProductsRepository();   
-            Products product = repository.Get(id); 
+            ProductsRepository repository = new ProductsRepository();
+            Products product = repository.Get(id);
             return View(product);
         }
         [HttpPost]
@@ -59,7 +59,7 @@ namespace WebApplication1.Controllers
 
         public IActionResult Remove(int id)
         {
-            ProductsRepository repo=new ProductsRepository();
+            ProductsRepository repo = new ProductsRepository();
             repo.DeleteById(id);
             return RedirectToAction("Index", "AdminPanel");
         }
@@ -70,7 +70,7 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
 
-        public IActionResult Add(string productName, decimal price, decimal discountedPrice,int quantity, IFormFile img)
+        public IActionResult Add(string productName, decimal price, decimal discountedPrice, int quantity, IFormFile img)
         {
             string wwwrootPath = _env.WebRootPath;
             string path = Path.Combine(wwwrootPath, "ProductImages");
@@ -106,15 +106,15 @@ namespace WebApplication1.Controllers
         public IActionResult AllOrders()
         {
             OrderRepository repo = new OrderRepository();
-            List<Order> orders=repo.GetAll();
+            List<Order> orders = repo.GetAll();
             return View(orders);
         }
 
         public IActionResult OrderDetail(int id)
         {
-            OrderItemRepository repo=new OrderItemRepository();
+            OrderItemRepository repo = new OrderItemRepository();
             List<OrderItem> items = new List<OrderItem>();
-            items=repo.GetAllByOrderId(id);
+            items = repo.GetAllByOrderId(id);
             return View(items);
         }
 
@@ -126,12 +126,12 @@ namespace WebApplication1.Controllers
 
         public IActionResult ProductDetail(int id)
         {
-           ProductsRepository repository = new ProductsRepository();
+            ProductsRepository repository = new ProductsRepository();
             return View(repository.Get(id));
         }
         public IActionResult AllCustomers()
         {
-            CustomerRepository repository=new CustomerRepository();
+            CustomerRepository repository = new CustomerRepository();
             return View(repository.GetAllCustomers());
         }
 
@@ -139,6 +139,26 @@ namespace WebApplication1.Controllers
         {
             AppointmentRepository repo = new AppointmentRepository();
             return View(repo.GetAll());
+        }
+        public IActionResult DeleteOrder(int id)
+        {
+            OrderRepository orderRepo = new OrderRepository();
+            OrderItemRepository itemRepo = new OrderItemRepository();
+            int customerId=orderRepo.getCustomerIdByOrderId(id);
+            CustomerRepository customerRepository = new CustomerRepository();
+            itemRepo.deleteByOrderId(id);
+            orderRepo.deleteOrderById(id);
+            customerRepository.deleteByCustomerId(customerId);
+            return RedirectToAction("AllOrders", "AdminPanel");
+        }
+        public IActionResult OrderDelivered(int id)
+        {
+
+            OrderRepository orderRepo = new OrderRepository();
+            OrderItemRepository itemRepo = new OrderItemRepository();
+            itemRepo.deleteByOrderId(id);
+            orderRepo.deleteOrderById(id);
+            return RedirectToAction("AllOrders", "AdminPanel");
         }
     }
 }

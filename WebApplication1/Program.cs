@@ -15,9 +15,11 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+//adding authorization here 
+
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("AdminPolicy", policy => policy.RequireClaim(ClaimTypes.Name, "admin123@myweb"));
+    options.AddPolicy("AdminPolicy", policy => policy.RequireClaim(ClaimTypes.Name, "Admin52@123"));
 });
 
 builder.Services.AddDistributedMemoryCache();

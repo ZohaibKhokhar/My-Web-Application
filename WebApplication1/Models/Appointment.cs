@@ -8,5 +8,7 @@
         public string PetType { get; set; }
         public DateTime preferredDateTime { get; set; }
         public string Reason { get; set; }
-    }
+
+		public string Email { get; set; }
+	}
 }

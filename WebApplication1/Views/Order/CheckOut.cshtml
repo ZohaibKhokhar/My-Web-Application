@@ -5,32 +5,42 @@
 }
 <h2>Checkout</h2>
 
-
 <div class="login-container py-5">
-    <form asp-action="PlaceOrder" asp-controller="Order" method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group my-2">
-        <label asp-for="Name" class="control-label">Name</label>
-        <input asp-for="Name" class="form-control" placeholder="Name" />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
+    <form asp-action="PlaceOrder" asp-controller="Order" method="post" id="checkout-form">
+        <!-- input fields -->
         <div class="form-group my-2">
-        <label asp-for="Address" class="control-label"Address></label>
-            <input asp-for="Address" class="form-control" placeholder="Address" />
-        <span asp-validation-for="Address" class="text-danger"></span>
-    </div>
+            <label asp-for="Name" class="control-label">Name</label>
+            <input asp-for="Name" class="form-control" placeholder="Name" required />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
         <div class="form-group my-2">
-        <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
-            <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" />
-        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-    </div>
-    <div class="row" style="justify-content:center">
+            <label asp-for="Address" class="control-label">Address</label>
+            <input asp-for="Address" class="form-control" placeholder="Address" required />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <div class="form-group my-2">
+            <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
+            <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" required />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="row" style="justify-content:center">
             <div class="form-group my-4">
-                <input type="submit" value="Place Order" class="btn btn-success btn sm" />
+               <div class="text-center">
+                    <input type="submit" value="Place Order" class="btn btn-success btn sm" id="place-order-btn" disabled />
+               </div>
+                
             </div>
-    </div>
+        </div>
     </form>
-
-
 </div>
 
+<script>
+    const form = document.getElementById('checkout-form');
+    const inputs = form.querySelectorAll('input[required]');
+    const submitBtn = document.getElementById('place-order-btn');
+
+    form.addEventListener('input', () => {
+        const allFilled = Array.prototype.every.call(inputs, input => input.value.trim() !== '');
+        submitBtn.disabled = !allFilled;
+    });
+</script>

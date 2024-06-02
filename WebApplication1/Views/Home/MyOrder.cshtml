@@ -3,12 +3,8 @@
 	Layout = "Layout2";
 }
 
-<div class="container">
-    <div class="row" style="padding-top: 0px;">
-        <div class="heading-container-aboutUs" style="justify-content: center;">
-            <p class="welcome" style="padding-left: 50PX;color:white;">Your Online Orders</p>
-        </div>
-    </div>
+<div class="text-center" style="margin-top:80px;">
+    <p class="welcome">Your Online Order</p>
 </div>
 
 
@@ -18,7 +14,7 @@
         <tbody>
             <tr>
                 <th><h4>Order Date and Time</h4></th>
-                <th><h4>Customer Id</h4></th>
+              
                 <th><h4>Order Detail</h4></th>
                 <th><h4>Customer Detail</h4></th>
             </tr>
@@ -27,9 +23,9 @@
             {
                 <tr>
                     <td>@order.OrderDate</td>
-                    <td>@order.CustomerId</td>
-                    <td><a class="btn btn-outline-warning" href="@Url.Action("YourOrder", "Home", new { id =order.OrderId })">your order</a></td>
-                    <td><a class="btn btn-outline-info" href="@Url.Action("YourDetail", "Home", new { id =order.CustomerId })">your detail</a></td>
+                   
+                    <td><a class="btn btn-outline-warning" href="@Url.Action("YourOrder", "Home", new { id =order.OrderId })">  view order</a></td>
+                    <td><a class="btn btn-outline-info" href="@Url.Action("YourDetail", "Home", new { id =order.CustomerId })"> view detail</a></td>
                 </tr>
             }
         </tbody>

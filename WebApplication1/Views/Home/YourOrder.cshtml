@@ -3,12 +3,8 @@
     Layout = "Layout2";
 }
 
-<div class="container">
-    <div class="row" style="padding-top: 0px;">
-        <div class="heading-container-aboutUs" style="justify-content: center;">
-            <p class="welcome" style="padding-left: 50PX;color:white;">Products You Bought</p>
-        </div>
-    </div>
+<div class="text-center" style="margin-top:80px;">
+    <p class="welcome">Products Ordered</p>
 </div>
 
 <div class="container-fluid" style="margin-top:90px; margin-bottom:150px;">
@@ -29,7 +25,7 @@
                     <td>@item.ProductId</td>
                     <td>@item.Quantity</td>
                     <td>@item.Price</td>
-                    <td><a class="btn btn-outline-success" href="@Url.Action("ProductDetail", "AdminPanel", new { id =item.ProductId })">Product Detail</a></td>
+                    <td><a class="btn btn-outline-success" href="@Url.Action("ProductDetail", "Home", new { id =item.ProductId })">Product Detail</a></td>
                 </tr>
             }
         </tbody>

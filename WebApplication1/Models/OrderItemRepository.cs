@@ -86,7 +86,19 @@ namespace WebApplication1.Models
 
             return orderItems;
         }
+        public void deleteByOrderId(int orderId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("DELETE FROM OrderItem WHERE OrderId = @OrderId", connection))
+                {
+                    command.Parameters.AddWithValue("@OrderId", orderId);
 
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
 
     }
 }

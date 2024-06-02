@@ -7,10 +7,10 @@ body {
 }
 
 :root {
-    --clr-primary: #232323;
+    --clr-primary:black ;
 }
 
-
+/*#232323*/
 /*links in product page*/
 
 a {
@@ -498,19 +498,19 @@ footer .top-bar i {
 
 .contact-title {
     text-align: center;
-    font-family: 'Times New Roman', Times, serif;
+    font-family:'Times New Roman', Times, serif;
     font-style: italic;
-    color: white;
-    background-color: var(--clr-primary);
+    color: green;
+    background-color:black;
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 20px;
 }
 
 .btn-login {
-    background-color: var(--clr-primary);
-    border-color: var(--clr-primary);
-    color: whitesmoke;
+    background-color: black;
+    border-color: black;
+    color: green;
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
@@ -588,7 +588,7 @@ footer .top-bar i {
     padding: 0.5rem 1rem;
     font-size: 1rem;
     cursor: pointer;
-    margin-left: 70px;
+    margin-left: 95px;
 }
 
     .btn-danger:hover {
@@ -600,38 +600,18 @@ footer .top-bar i {
 
 
 .sum-container {
-
+    max-width: 300px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: #fff; /* White background */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
-
-/*try it*/
-
-
 .navbar-nav .dropdown-toggle::after {
     display: none;
 }
 
-.dropdown-menu.dropdown-menu-right {
-    right: 0;
-    left: auto;
-}
-
-    .dropdown-menu.dropdown-menu-right::before {
-        right: 12px;
-        left: auto;
-    }
-
-.dropdown-item {
-    font-size: 14px;
-    padding: 10px 20px;
-}
-
-    .dropdown-item:hover {
-        background-color: #f0f0f0;
-        color: #333;
-    }
 
 
 
@@ -680,4 +660,11 @@ h4 {
 h5 {
     font-style: italic;
     font-family: 'Times New Roman', Times, serif;
+}
+
+/*drop down item font on navbar*/
+.font {
+    font-family:'Times New Roman', Times, serif;
+    font-style:initial;
+    font-weight:300;
 }

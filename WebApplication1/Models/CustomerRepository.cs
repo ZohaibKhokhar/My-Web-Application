@@ -110,6 +110,19 @@ namespace WebApplication1.Models
             }
             return list;
         }
+        public void deleteByCustomerId(int customerId)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "DELETE FROM Customers WHERE CustomerId = @CustomerId";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CustomerId", customerId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
 

@@ -12,7 +12,7 @@ namespace WebApplication1.Models
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "insert into Appointments values(@name,@phone,@pettype,@dateTime,@reason)";
+                string query = "insert into Appointments values(@name,@phone,@pettype,@dateTime,@reason,@email)";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.Add("@name", SqlDbType.NVarChar, 50).Value = appointment.Name;
@@ -20,6 +20,7 @@ namespace WebApplication1.Models
                     cmd.Parameters.Add("@pettype", SqlDbType.NVarChar, 20).Value = appointment.PetType;
                     cmd.Parameters.Add("@dateTime", SqlDbType.DateTime).Value = appointment.preferredDateTime;
                     cmd.Parameters.Add("@reason", SqlDbType.NVarChar, 200).Value = appointment.Reason;
+                    cmd.Parameters.Add("@email", SqlDbType.NVarChar, 50).Value = appointment.Email;
                     int rows = cmd.ExecuteNonQuery();
                 }
             }
@@ -82,16 +83,44 @@ namespace WebApplication1.Models
                         Phone = reader["PhoneNumber"] as string,
                         PetType = reader["PetType"] as string,
                         preferredDateTime = DateTime.Parse(reader["AppointmentDateTime"].ToString()),
-                        Reason = reader["ReasonForAppointment"] as string
+                        Reason = reader["ReasonForAppointment"] as string,
+                        Email = reader["Email"] as string
                     };
                     list.Add(app);
                 }
-            }            
+            }
             return list;
-        } 
+        }
+        public List<Appointment> GetByEmail(string email)
+        {
+            List<Appointment> list = new List<Appointment>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "select * from Appointments where Email = @email";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.Add("@email", SqlDbType.NVarChar, 50).Value = email;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Appointment app = new Appointment()
+                    {
+                        Id = int.Parse(reader["ID"].ToString()),
+                        Name = reader["Name"] as string,
+                        Phone = reader["PhoneNumber"] as string,
+                        PetType = reader["PetType"] as string,
+                        preferredDateTime = DateTime.Parse(reader["AppointmentDateTime"].ToString()),
+                        Reason = reader["ReasonForAppointment"] as string,
+                        Email = reader["Email"] as string
+                    };
+                    list.Add(app);
+                }
+            }
+            return list;
+        }
+
+
     }
-
-
 }
     
 
